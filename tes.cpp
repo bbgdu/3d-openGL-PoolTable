@@ -1,13 +1,15 @@
-//Snooker table
+//Pool table
 #include<iostream>
 #include<GL/glut.h>
 using namespace std;
 int semicircle_points[]={24,23,23,23,23,23,23,22,22,22,21,21,20,20,19,18,17,16,15,14,13,11,9,6,-24,-23,-23,-23,-23,-23,-23,-22,-22,-22,-21,-21,-20,-20,-19,-18,-17,-16,-15,-14,-13,-11,-9,-6};
 void displayMe(void)
 {
-	//Board
+	//UpperView of board
+
+	//Platform(100*100)
 	glColor3f(0,1,0);
-	glBegin(GL_POLYGON);
+	glBegin(GL_POLYGON);//TODO QUAD
 	glVertex3f(100,100,0);
 	glVertex3f(-100,100,0);
 	glVertex3f(-100,-100,0);
@@ -60,7 +62,7 @@ void displayAll(void)
 void init(void){
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(200,-200,200,-200,1,-1);
+	glOrtho(200,-200,200,-200,1,-1); //Frame size is 200*200
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -68,11 +70,11 @@ int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE);
-	glutInitWindowSize(1080, 680);
+	glutInitWindowSize(1080, 680); //Rectangle window 
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("ProjectCS352");
 	init();
-	glutDisplayFunc(displayMe);
+	glutDisplayFunc(displayAll);
 	glutMainLoop();
 	return 0;
 }
